@@ -1,33 +1,46 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LittleLemonHeader from './LittleLemonHeader';
-import LittleLemonFooter from './LittleLemonFooter';
-//import MenuScreen from "./MenuScreen";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+//import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//import LittleLemonHeader from './LittleLemonHeader';
+//import LittleLemonFooter from './LittleLemonFooter';
+import MenuScreen from "./MenuScreen";
 import WelcomeScreen from "./WelcomeScreen";
-import LoginScreen from './LoginScreen';
+//import LoginScreen from './LoginScreen';
 
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <>
     <NavigationContainer>
-    <View style={styles.container}>
-          <LittleLemonHeader />
-       
-      <Stack.Navigator initialRouteName="Welcome" screenOptions={{headerTitleAlign:'center'}}>
-        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ title: 'Home' }}/>
-        <Stack.Screen name="Login" component={LoginScreen}/>
-      </Stack.Navigator>
-      </View>
+    <Tab.Navigator screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused
+              ? 'ios-information-circle'
+              : 'ios-information-circle-outline';
+          } else if (route.name === 'Menu') {
+            iconName =  'ios-list';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
+      })}>
+        <Tab.Screen name="Home" component={WelcomeScreen} />
+        <Tab.Screen name="Menu" component={MenuScreen} />
+      </Tab.Navigator>
 
 
-      <View style={styles.footerContainer}>
+      {/* <View style={styles.footerContainer}>
           <LittleLemonFooter />
-        </View>
+        </View> */}
     </NavigationContainer>
     </>
   );

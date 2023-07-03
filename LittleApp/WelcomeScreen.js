@@ -1,17 +1,16 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, Text, Pressable  } from 'react-native';
 
 
 
-const Welcome = () => {
+const Welcome = ({navigation}) => {
     
     return (
-        <ScrollView style={styles.container}>
-      <View style={styles.headerWrapper}>
+        <View style={styles.container}>
   
         <Image style={styles.logoImage} 
         source={require('./img/LittleLemonLogo.png')}
-        resizeMode="cover"
+        // resizeMode="cover"
           accessible={true}
           accessibilityLabel={'Little Lemon Logo'}     
           />
@@ -19,14 +18,18 @@ const Welcome = () => {
       <Text style={styles.title}>
         Little Lemon, your local Mediterranean Bistro
       </Text>
-      </View>
+      
 
       <Text style={styles.regularText}>
         Little Lemon is a charming neighborhood bistro that serves simple food
         and classic cocktails in a lively but casual environment. We would love
         to hear your experience with us!
       </Text>
-      </ScrollView>
+
+      <Pressable onPress={() => navigation.navigate('Menu')}> 
+      <Text style={styles.buttonText}>View Menu</Text> 
+      </Pressable> 
+      </View>
 );
 };
 
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     paddingRight: 10,
-    paddingLeft: 20,
+    paddingLeft: 10,
     paddingTop: 40,
     paddingBottom: 10,
     fontSize: 30,
@@ -66,10 +69,28 @@ const styles = StyleSheet.create({
      resizeMode: 'contain',
      
   },
+  button: {
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 40,
+    backgroundColor: '#EDEFEE',
+    borderColor: '#EDEFEE',
+    borderWidth: 2,
+    borderRadius: 12
+  },
+  buttonText: {
+    color: '#333333',
+    textAlign: 'center',
+    fontSize: 32,
+    color: 'green',
+  },
   logoImage:{
     width: 100,
     height: 100,
     borderRadius: 20,
+    resizeMode: 'cover',
+    alignSelf:'center',
   },
   image: {
     width: 360,
@@ -87,8 +108,8 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    marginTop: 16,
-    paddingVertical: 10,
+    marginTop: 20,
+    paddingVertical: 20,
     color: '#013220',
     textAlign: 'center',
     fontSize: 20,

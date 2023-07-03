@@ -76,15 +76,17 @@ const menuStyles = StyleSheet.create({
               backgroundColor: '#333333',
             },
             sectionHeader: {
-              backgroundColor: '#fbdabb',
+              backgroundColor: '#607D3B',
               color: '#333333',
               fontSize: 34,
               flexWrap: 'wrap',
               textAlign: 'center',
+              color: 'white',
+              
             },
             itemText: {
               color: '#F4CE14',
-              fontSize: 32,
+              fontSize: 20,
             },
             separator: {
               borderBottomWidth: 1,
@@ -92,10 +94,11 @@ const menuStyles = StyleSheet.create({
             },
             footerText: {
               color: 'black',
-              fontSize: 20,
+              fontSize: 15,
               flexWrap: 'wrap',
               textAlign: 'center',
-              backgroundColor:'#EE9972',
+              backgroundColor:'#8FC647',
+              fontStyle: 'italic',
             },
             button: {
               fontSize: 22,

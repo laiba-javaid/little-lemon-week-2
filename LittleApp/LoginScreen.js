@@ -9,20 +9,19 @@ import {
   View,
 } from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
-  const [loggedIn, onLogin] = useState(false);
+  // const [loggedIn, onLogin] = useState(false);
 
   return (
-    <View> 
-    {/* // <ScrollView style={styles.container}> */}
+     
+    <ScrollView style={styles.container}>
       <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-      {/* {loggedIn && <Text style={styles.headerText}>You are logged in!</Text>} */}
+      <Text style={styles.regularText}>Login to continue </Text>
 
-      {!loggedIn && (
-        <>
-          <Text style={styles.regularText}>Login to continue </Text>
+      {/* {loggedIn && <Text style={styles.headerText}>You are logged in!</Text>} */}
+          
           <TextInput
             style={styles.inputBox}
             value={email}
@@ -38,12 +37,15 @@ export default function LoginScreen() {
             keyboardType={'default'}
             secureTextEntry={true}
           />
-          <Pressable onPress={() => onLogin(!loggedIn)} style={styles.button}>
+          {/* <Pressable onPress={() => onLogin(!loggedIn)} style={styles.button}>
             <Text style={styles.buttonText}>Log in</Text>
-          </Pressable>
-        </>
-      )}
-      </View>
+          </Pressable> */}
+        <Pressable onPress={() => navigation.navigate('Welcome')} style={styles.button}> 
+      <Text style={styles.buttonText}>Log in</Text> 
+      </Pressable> 
+        
+    
+      </ScrollView>
     
   );
 }
